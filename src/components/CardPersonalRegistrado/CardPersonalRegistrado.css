@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(../../fonts/Roboto-Regular.ttf);
+}
+
+.cardPersonal{
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: .85rem 1.2rem;
+  background-color: rgba(1, 80, 170, .05);
+  border-radius: 5px;
+}
+  .cardPersonal > .información{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-transform: uppercase;
+    font-family: "Roboto";
+  }
+    .cardPersonal > .información h3{
+      color: rgba(1, 80, 170, .8);
+    }
+    .cardPersonal > .información p{
+      font-size: 19px;
+    }
+    .cardPersonal > .información svg{
+      color: rgb(1, 80, 170);
+    }
+
+  .cardPersonal .opciones{
+    position: absolute;
+    right: 1.25rem;
+    display: flex;
+    gap: 1rem;
+  }
+    .cardPersonal .opciones li{
+      color: #fff;
+      padding: .5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 200ms ease;
+    }
+    .cardPersonal .opciones li.editar{
+      background-color: rgb(1, 80, 170);
+    }
+    .cardPersonal .opciones li.editar:hover{
+      color: rgb(1, 80, 170);
+    }
+    .cardPersonal .opciones li.eliminar{
+      background-color: darkred;
+    }
+    .cardPersonal .opciones li.eliminar:hover{
+      color: darkred;
+    }
+    .cardPersonal .opciones li:hover{
+      background-color: #fff;
+    }
