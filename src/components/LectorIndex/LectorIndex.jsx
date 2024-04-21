@@ -14,6 +14,7 @@ import "./LectorIndex.css";
 import { CompareContext } from "../../context/compare.context";
 
 import loadingGIF from "../../img/loadingGIF.gif";
+import AudioHuellaErronea from "./huellaErronea.mp3";
 
 export const LectorIndex = () => {
 
@@ -118,12 +119,13 @@ export const LectorIndex = () => {
 
   useEffect(() => {
     if (resultCompare === true) {
-      // setNavigateTo(<Navigate to={`/personal/?cedula=${compareCedula}`} />);
-      window.location.href = `https://148.204.225.152/capital/ingreso.php?cedula=${compareCedula}`
+      setNavigateTo(<Navigate to={`/personal/?cedula=${compareCedula}`} />);
+      // window.location.href = `https://148.204.225.152/capital/ingreso.php?cedula=${compareCedula}`
       setResultCompare(null);
       setFetchState(false);
       setModalLoadingState("inactive");
     } else if (resultCompare === false) {
+      document.querySelector(".audioHuellaErronea").play();
       setResultCompare(null);
       setFetchState(false);
       setComparisionResult("incorrect")
@@ -192,6 +194,7 @@ export const LectorIndex = () => {
             </span>
           )}
         </p>
+        <p className="sigloxxi">En caso de huella no reconocida pasar a aula siglo XXI para corregir.</p>
         {navigateTo}
       </section>
       <section className={`modalLoading ${modalLoadingState} ${comparisionResult}`}>
@@ -200,6 +203,7 @@ export const LectorIndex = () => {
           <img src={loadingGIF} alt="GIF en referencia a la comparación de huellas dactilares" />
         </article>
       </section>
+      <audio src={AudioHuellaErronea} className="audioHuellaErronea"></audio>
     </>
   );
 };

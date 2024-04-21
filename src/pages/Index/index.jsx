@@ -7,7 +7,7 @@ import { CompareContextProvider } from "../../context/compare.context";
 
 import "./index.css";
 
-export const Index = () => {
+export const Index = ({ appUsability }) => {
 
   let [renderCounter, _] = useState(0);
 
@@ -25,8 +25,8 @@ export const Index = () => {
 
   return (
     <section className="indexPage">
-      <RelojIndex />
       <CompareContextProvider>
+        <RelojIndex appUsability={appUsability}/>
         <LectorIndex />
       </CompareContextProvider>
     </section>

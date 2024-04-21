@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import "./RelojIndex.css";
 
-import { Link } from "react-router-dom";
+import { CompareContext } from "../../context/compare.context";
 
-export const RelojIndex = () => {
+export const RelojIndex = ({ appUsability }) => {
   let [renderCounter, setRenderCounter] = useState(0);
   const [reloj, setReloj] = useState(0);
+
+  const { reactiveServerTime } = useContext(CompareContext);
+
+  const seconds = 179000 / 1000;
+
+  let [timeSeconds, setTimeSeconds] = useState(seconds);
 
   useEffect(() => {
     setRenderCounter(renderCounter++);
@@ -16,12 +22,17 @@ export const RelojIndex = () => {
       setInterval(() => {
         getReloj();
       }, 1000);
+
+      setInterval(() => {
+        setTimeSeconds(timeSeconds--);
+      }, 1000);
     }
   }, []);
 
   function getReloj() {
     const horas = [
-      12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+      12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+      11,
     ];
 
     const date = new Date();
@@ -55,6 +66,20 @@ export const RelojIndex = () => {
       </div>
       <div className="horary">
         <h4>¡{getHorary()}!</h4>
+      </div>
+      <div className="appUsability">
+        {appUsability === "notTester" ? null : (
+          <p>
+            APLICACIÓN DE PRUEBAS
+            <br />
+            <span>(NO REGISTRAR SALIDAS O ENTRADAS)</span>
+          </p>
+        )}
+      </div>
+      <div className="reactiveServer">
+        <p>La ventana se actualizará en: {timeSeconds} segundos</p>
+        {reactiveServerTime}
+        <span className="appVersion">Version 1.3 (Corregida)</span>
       </div>
     </section>
   );

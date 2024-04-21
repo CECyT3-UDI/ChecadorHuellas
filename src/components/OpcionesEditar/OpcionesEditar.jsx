@@ -13,6 +13,7 @@ export const OpcionesEditar = () => {
 
   function GoToAlta(){
     window.location.href = "/capital/checador/#/alta"
+    window.location.reload();
   }
 
   return(

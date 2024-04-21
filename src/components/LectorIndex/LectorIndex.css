@@ -131,3 +131,12 @@
   font-weight: bold;
   text-align: center;
 }
+
+.seccionLectorIndex .sigloxxi{
+  position: absolute;
+  font-size: 18px;
+  margin-left: -1.75rem;
+  margin-top: 25rem;
+  /* color: rgba(1, 80, 170, .85); */
+  color: darkred;
+}

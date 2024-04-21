@@ -18,6 +18,7 @@ export const CardPersonalRegistrado = ({
 
   function RedirectToEditar(indexEmpleado){
     window.location.href = `/capital/checador/#/editar/?index=${indexEmpleado}`;
+    window.location.reload();
   }
 
   return (

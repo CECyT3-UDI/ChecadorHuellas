@@ -50,3 +50,28 @@
     transform: scale(1.025);
     box-shadow: 7px 7px 2.5px rgba(1, 80, 170, .25);
   }
+
+
+  .seccionReloj .reactiveServer{
+    position: absolute;
+    bottom: .75rem;
+    left: 1.5rem;
+    font-family: "Roboto";
+    text-align: left;
+    font-size: 12px;
+  }
+  .seccionReloj .appVersion{
+    font-weight: bold;
+    color: rgba(1, 80, 170);
+    opacity: .75;
+  }
+
+  .seccionReloj .appUsability{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+  }
+    .seccionReloj .appUsability span{
+      font-size: 16px;
+      color: rgba(1, 80, 170);
+    }

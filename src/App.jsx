@@ -15,7 +15,10 @@ import { Editar } from "./pages/Editar/Editar";
 
 function App() {
   let [renderCounter, setRenderCounter] = useState(0);
-  const [ipAddress, setIpAddress] = useState(false);
+  const [ipAddressResult, setIpAddressResult] = useState(false);
+  const [ipAddress, setIpAddress] = useState(null);
+
+  const [appUsability, setAppUsability] = useState(null);
 
   useEffect(() => {
     setRenderCounter(renderCounter++);
@@ -23,7 +26,7 @@ function App() {
     if (renderCounter != 1) return;
 
     if (hasLogged() === true) {
-      return setIpAddress(true);
+      return setIpAddressResult(true);
     }
 
     getIpAddress();
@@ -38,9 +41,16 @@ function App() {
         return (window.location.href = "https://cecyt3.ipn.mx/");
       }
 
-      setIpAddress(resultIpAuthorized);
+      setIpAddress(ipToTest);
+
+      setIpAddressResult(resultIpAuthorized);
 
       auth();
+    }).then(() => {
+      const resultIp = ipAddress != "148.204.225.152";
+
+      if(resultIp === true) setAppUsability("notTester");
+      else if(resultIp === false) setAppUsability("tester");
     });
   }
 
@@ -74,9 +84,7 @@ function App() {
   function testIp(ipToTest) {
     const ipsAuthorized = ["187.191.39.157", "148.204.233.1", "148.204.225.152", "148.204.233.11", "148.204.225.54", "148.204.225.103", "148.204.225.105", "148.204.225.106", "148.204.225.249"];
 
-    if (ipsAuthorized.includes(ipToTest)) return true;
-
-    return false;
+    return ipsAuthorized.includes(ipToTest);
   }
 
   function saveInLocalStorage() {
@@ -94,14 +102,14 @@ function App() {
 
   return (
     <>
-      {ipAddress === true ? (
+      {ipAddressResult === true ? (
         <Routes>
           <Route
             path="/"
             element={
               <>
                 <Header />
-                <Index />
+                <Index appUsability={appUsability}/>
               </>
             }
           />

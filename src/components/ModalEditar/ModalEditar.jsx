@@ -171,7 +171,7 @@ export const ModalEditar = () => {
     return (
       <div className="formulario">
         <div>
-          <input type="text" placeholder="NOMBRE COMPLETO" />
+          <input type="text" placeholder="NOMBRE COMPLETO" defaultValue={infoEmpleado.nombre} />
           <p
             onClick={() => {
               insertarValor(0, infoEmpleado.nombre);
@@ -182,7 +182,7 @@ export const ModalEditar = () => {
           </p>
         </div>
         <div>
-          <input type="text" placeholder="CÉDULA" />
+          <input type="text" placeholder="CÉDULA" defaultValue={infoEmpleado.cedula} />
           <p
             onClick={() => {
               insertarValor(1, infoEmpleado.cedula);
@@ -192,7 +192,7 @@ export const ModalEditar = () => {
           </p>
         </div>
         <div>
-          <input type="text" placeholder="RFC" />
+          <input type="text" placeholder="RFC" defaultValue={infoEmpleado.rfc}/>
           <p
             onClick={() => {
               insertarValor(2, infoEmpleado.rfc);
@@ -202,7 +202,7 @@ export const ModalEditar = () => {
           </p>
         </div>
         <div>
-          <input type="text" placeholder="PUESTO LABORAL" />
+          <input type="text" placeholder="PUESTO LABORAL" defaultValue={infoEmpleado.puesto}/>
           <p
             onClick={() => {
               insertarValor(3, infoEmpleado.puesto);
@@ -212,7 +212,7 @@ export const ModalEditar = () => {
           </p>
         </div>
         <div>
-          <input type="text" placeholder="TURNO" />
+          <input type="text" placeholder="TURNO" defaultValue={infoEmpleado.turno}/>
           <p
             onClick={() => {
               insertarValor(4, infoEmpleado.turno);
