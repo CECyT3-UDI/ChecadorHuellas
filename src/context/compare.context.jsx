@@ -34,6 +34,7 @@ export const CompareContextProvider = ({ children }) => {
   }
 
   function ReactiveServer(){
+
     const date = new Date();
 
     const hora = `a las ${date.toLocaleTimeString()} hrs`;

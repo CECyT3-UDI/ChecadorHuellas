@@ -68,6 +68,7 @@ export const UsersContextProvider = ({ children }) => {
 
         if (dataResponse === "CREADO"){
           deleteLocalStorage(true);
+          window.location.href = "/#/alta";
           return dataResponse;
         }
         if (dataResponse === "ERROR") {
@@ -98,7 +99,9 @@ export const UsersContextProvider = ({ children }) => {
 
           async function fetcDeleteUser(){
 
-            await Services_DeleteUser(cedula).then((_) => {
+            await Services_DeleteUser(cedula).then(({data}) => {
+
+              if(data === "ERROR") alert("OCURRIO UN ERROR AL ELIMINAR");
 
               GetUsers(true);
 

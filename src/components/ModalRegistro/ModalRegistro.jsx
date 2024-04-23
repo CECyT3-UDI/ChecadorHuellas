@@ -227,11 +227,9 @@ export const ModalRegistro = ({ modalState, animationRegistro }) => {
     let turno = inputs[4].value;
 
     localStorage.removeItem("huellas");
-    setNavigateTo(
-      <Navigate
-        to={`/alta/?nombre=${nombre}&cedula=${cedula}&rfc=${rfc}&puesto=${puesto}&turno=${turno}&modal=abierto`}
-      />
-    );
+
+    window.location.href = `/#/alta?nombre=${nombre}&cedula=${cedula}&rfc=${rfc}&puesto=${puesto}&turno=${turno}&modal=abierto`;
+    // window.location.reload();
   }
 
   useEffect(() => {

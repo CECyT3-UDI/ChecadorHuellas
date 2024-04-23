@@ -16,7 +16,7 @@ import { Editar } from "./pages/Editar/Editar";
 function App() {
   let [renderCounter, setRenderCounter] = useState(0);
   const [ipAddressResult, setIpAddressResult] = useState(false);
-  const [ipAddress, setIpAddress] = useState(null);
+  const urlIpAddress = window.location.href;
 
   const [appUsability, setAppUsability] = useState(null);
 
@@ -26,10 +26,20 @@ function App() {
     if (renderCounter != 1) return;
 
     if (hasLogged() === true) {
+      const resultIp = urlIpAddress.includes("148.204.225.152");
+
+      resultIp ? setAppUsability("notTester") : setAppUsability("tester");
+
       return setIpAddressResult(true);
     }
 
-    getIpAddress();
+    const initialFunction = async () => {
+      await getIpAddress().then(_ => {
+        console.log(urlIpAddress, appUsability)
+      });
+    }
+
+    initialFunction();
   }, []);
 
   async function getIpAddress() {
@@ -41,17 +51,10 @@ function App() {
         return (window.location.href = "https://cecyt3.ipn.mx/");
       }
 
-      setIpAddress(ipToTest);
-
       setIpAddressResult(resultIpAuthorized);
 
       auth();
-    }).then(() => {
-      const resultIp = ipAddress != "148.204.225.152";
-
-      if(resultIp === true) setAppUsability("notTester");
-      else if(resultIp === false) setAppUsability("tester");
-    });
+    })
   }
 
   async function auth() {
